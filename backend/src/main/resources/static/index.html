@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobTrack — Career Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">J</div>
+      <span>JobTrack</span>
+    </div>
+    <nav>
+      <button class="nav-item active" data-page="dashboard"><span>⌂</span> Dashboard</button>
+      <button class="nav-item" data-page="applications"><span>▣</span> Applications</button>
+      <button class="nav-item" data-page="interviews"><span>◷</span> Interviews</button>
+      <button class="nav-item" data-page="saved"><span>☆</span> Saved Jobs</button>
+      <button class="nav-item" data-page="about"><span>ⓘ</span> About</button>
+      <button class="nav-item" data-page="profile"><span>◉</span> My Profile</button>
+    </nav>
+    <div class="sidebar-tip">
+      <div class="tip-icon">✦</div>
+      <strong>Stay organized</strong>
+      <p>Keep your career journey moving.</p>
+    </div>
+    <button id="logoutBtn" class="logout-btn">↪ Sign out</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu">☰</button>
+      <div>
+        <p class="eyebrow">YOUR CAREER DASHBOARD</p>
+        <h1 id="pageGreeting">Welcome To JobTrack<span>👋</span></h1>
+      </div>
+      <div class="user-chip">
+        <div class="avatar" id="avatar">A</div>
+        <div><strong id="userName">Loading...</strong><small id="userTitle">Candidate</small></div>
+      </div>
+    </header>
+
+    <section id="page-dashboard" class="page active">
+      <div class="hero">
+        <div>
+          <p class="hero-kicker">KEEP GOING</p>
+          <h2>Your next opportunity is closer<br>than you think.</h2>
+          <p>Track every application, prepare for every interview, and stay focused on what matters.</p>
+        </div>
+        <div class="hero-orbit"><div>✦</div></div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-icon purple">↗</span><div><small>Applications</small><strong id="statApplications">0</strong></div></div>
+        <div class="stat-card"><span class="stat-icon blue">◷</span><div><small>Under review</small><strong id="statReview">0</strong></div></div>
+        <div class="stat-card"><span class="stat-icon orange">★</span><div><small>Interviews</small><strong id="statInterviews">0</strong></div></div>
+        <div class="stat-card"><span class="stat-icon green">✓</span><div><small>Offers</small><strong id="statOffers">0</strong></div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-head"><div><p class="eyebrow">YOUR JOB SEARCH</p><h3>Applications</h3></div><button class="primary-btn small" data-action="add-application">+ Add application</button></div>
+        <div id="dashboardApplications" class="table-wrap"></div>
+      </div>
+    </section>
+
+    <section id="page-applications" class="page">
+      <div class="page-title"><div><p class="eyebrow">TRACK EVERYTHING</p><h2>Applications</h2><p>Manage your job search from one clean view.</p></div><button class="primary-btn" data-action="add-application">+ Add application</button></div>
+      <div class="section-card"><div id="applicationsTable" class="table-wrap"></div></div>
+    </section>
+
+    <section id="page-interviews" class="page">
+      <div class="page-title"><div><p class="eyebrow">BE READY</p><h2>Interviews</h2><p>Keep upcoming conversations visible and organized.</p></div><button class="primary-btn" data-action="add-interview">+ Add interview</button></div>
+      <div id="interviewsGrid" class="cards-grid"></div>
+    </section>
+
+    <section id="page-saved" class="page">
+      <div class="page-title"><div><p class="eyebrow">YOUR SHORTLIST</p><h2>Saved Jobs</h2><p>Keep interesting roles close while you decide when to apply.</p></div><button class="primary-btn" data-action="add-saved">+ Save job</button></div>
+      <div id="savedGrid" class="cards-grid"></div>
+    </section>
+
+    <section id="page-about" class="page">
+      <div class="page-title">
+        <div>
+          <p class="eyebrow">A CLEARER WAY TO STAY ORGANIZED</p>
+          <h2>About JobTrack</h2>
+          <p>A simple workspace for keeping your job search focused, organized, and moving forward.</p>
+        </div>
+      </div>
+
+      <div class="about-hero">
+        <div class="about-hero-mark" aria-hidden="true">J</div>
+        <div>
+          <p class="about-kicker">YOUR JOB SEARCH, IN ONE PLACE</p>
+          <h3>Make every opportunity easier to manage.</h3>
+          <p>JobTrack helps candidates keep their applications, saved roles, interview details, and profile together—so it’s easier to see where things stand and what to do next.</p>
+        </div>
+      </div>
+
+      <div class="about-feature-grid">
+        <article class="about-feature-card">
+          <span class="about-feature-icon about-icon-violet" aria-hidden="true">↗</span>
+          <h3>Track applications</h3>
+          <p>Keep company, role, application date, and progress details together in one easy-to-review list.</p>
+        </article>
+        <article class="about-feature-card">
+          <span class="about-feature-icon about-icon-blue" aria-hidden="true">☆</span>
+          <h3>Save interesting roles</h3>
+          <p>Keep promising opportunities close while you decide which ones to pursue.</p>
+        </article>
+        <article class="about-feature-card">
+          <span class="about-feature-icon about-icon-green" aria-hidden="true">◷</span>
+          <h3>Keep interview notes</h3>
+          <p>Record interview details and dates that have been arranged with you.</p>
+        </article>
+      </div>
+
+      <div class="about-how-card">
+        <div class="about-how-heading">
+          <p class="eyebrow">HOW IT WORKS</p>
+          <h3>Your search, step by step</h3>
+        </div>
+        <ol class="about-steps">
+          <li><span>01</span><div><strong>Find an opportunity</strong><p>Discover a role and apply through the employer or job platform.</p></div></li>
+          <li><span>02</span><div><strong>Keep a record</strong><p>Add the application to JobTrack and update its status as you hear back.</p></div></li>
+          <li><span>03</span><div><strong>Stay prepared</strong><p>Save roles you may want to pursue and record interview arrangements.</p></div></li>
+        </ol>
+        <p class="about-note"><span aria-hidden="true">i</span> JobTrack is a personal organizer. It does not submit applications or receive hiring updates from employers automatically.</p>
+      </div>
+    </section>
+
+    <section id="page-profile" class="page">
+      <div class="page-title profile-page-title">
+        <div>
+          <p class="eyebrow">YOUR CAREER IDENTITY</p>
+          <h2>Create your profile</h2>
+          <p>Showcase your experience and make your next career move with confidence.</p>
+        </div>
+      </div>
+
+      <div class="profile-overview">
+        <div class="profile-overview-person">
+          <div class="profile-avatar-large" id="profileAvatar">A</div>
+          <div>
+            <span class="profile-kicker">JOBTRACK PROFILE</span>
+            <h3 id="profilePreviewName">Your name</h3>
+            <p id="profilePreviewTitle">Add a professional headline</p>
+          </div>
+        </div>
+        <div class="profile-strength">
+          <div class="profile-strength-label">
+            <span>Profile completeness</span>
+            <strong id="profileCompletion">0%</strong>
+          </div>
+          <div class="profile-progress" role="progressbar" aria-label="Profile completeness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span id="profileProgress"></span>
+          </div>
+          <p id="profileCompletionHint">Add your details to build a stronger profile.</p>
+        </div>
+      </div>
+
+      <div class="profile-layout">
+        <aside class="profile-tips">
+          <span class="profile-tips-icon" aria-hidden="true">✦</span>
+          <h3>A profile that tells your story</h3>
+          <p>A clear headline and a short professional summary help keep your career details ready in one place.</p>
+          <div class="profile-tip-divider"></div>
+          <p class="profile-tip-note"><strong>Quick tip</strong> Use your headline to describe the role or skills you want employers to notice.</p>
+        </aside>
+
+        <div class="section-card profile-card">
+          <form id="profileForm" class="profile-form">
+            <div class="profile-form-heading">
+              <div class="profile-section-number">01</div>
+              <div>
+                <h3>Personal information</h3>
+                <p>Keep your contact and career details up to date.</p>
+              </div>
+            </div>
+            <div class="profile-fields">
+              <label class="profile-field">
+                <span>Full name <b aria-hidden="true">*</b></span>
+                <input id="profileName" name="name" autocomplete="name" placeholder="e.g. Neha Kobaal" required>
+              </label>
+              <label class="profile-field">
+                <span>Professional headline</span>
+                <input id="profileTitle" name="title" autocomplete="organization-title" placeholder="e.g. Java Developer">
+              </label>
+              <label class="profile-field">
+                <span>Email address</span>
+                <input id="profileEmail" name="email" type="email" autocomplete="email" readonly aria-describedby="profileEmailHelp">
+                <small id="profileEmailHelp">Your account email cannot be changed here.</small>
+              </label>
+              <label class="profile-field">
+                <span>Phone number</span>
+                <input id="profilePhone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. +91 98765 43210">
+              </label>
+              <label class="profile-field profile-field-wide">
+                <span>Current location</span>
+                <input id="profileLocation" name="location" autocomplete="address-level2" placeholder="e.g. Bengaluru, Karnataka">
+              </label>
+              <div class="profile-field profile-field-wide">
+                <span>Resume</span>
+                <input id="profileResumeFile" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
+                <div class="resume-controls">
+                  <button id="profileResumeButton" class="secondary-btn" type="button">Add resume</button>
+                  <span id="profileResumeName" class="resume-file-name">No resume attached</span>
+                  <button id="profileResumeDownload" class="secondary-btn" type="button" hidden>Download</button>
+                  <button id="profileResumeRemove" class="icon-btn" type="button" hidden>Remove</button>
+                </div>
+                <small>Attach a PDF, DOC, or DOCX file (up to 5 MB).</small>
+              </div>
+              <label class="profile-field profile-field-wide">
+                <span>Professional summary</span>
+                <textarea id="profileBio" name="bio" rows="5" maxlength="500" placeholder="Introduce your experience, strengths, and the kind of opportunity you are looking for."></textarea>
+                <small class="profile-character-count"><span id="profileBioCount">0</span>/500 characters</small>
+              </label>
+            </div>
+            <div class="profile-form-footer">
+              <p id="profileMessage" class="message" role="status" aria-live="polite"></p>
+              <button class="profile-save-button" id="profileSaveButton" type="submit">Save profile <span aria-hidden="true">→</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card">
+    <button class="modal-close" data-close-modal>×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

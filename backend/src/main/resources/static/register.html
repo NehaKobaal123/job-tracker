@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobTrack — Create account</title>
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-brand">
+      <div class="brand-mark">J</div>
+      <span>JobTrack</span>
+    </section>
+    <section class="auth-card">
+      <p class="eyebrow">START YOUR CAREER JOURNEY</p>
+      <h1>Create your account ✨</h1>
+      <p class="muted">One place for every application and interview.</p>
+      <form id="registerForm">
+        <label>Full name<input id="name" required placeholder="Your name"></label>
+        <label>Email<input id="email" type="email" required placeholder="you@example.com"></label>
+        <label>Password<input id="password" type="password" minlength="6" required placeholder="At least 6 characters"></label>
+        <button class="primary-btn" type="submit">Create account</button>
+        <p id="message" class="message"></p>
+      </form>
+      <p class="switch">Already have an account? <a href="login.html">Sign in</a></p>
+    </section>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
