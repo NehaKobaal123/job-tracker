@@ -53,14 +53,27 @@ from source; no JAR needs to be committed.
 3. Configure the web service's **Root Directory** as `/backend`. Railway will
    build and run `backend/Dockerfile`.
 4. Add these variables to the web service, replacing `MySQL` in the Railway
-   references with the exact name of your database service if needed:
+   references with the exact name of your database service if needed. These
+   references connect the app to Railway's private MySQL host; without them,
+   the app falls back to local development defaults and cannot start in Railway.
 
    ```text
-   DB_URL=jdbc:mysql://${{MySQL.MYSQLHOST}}:${{MySQL.MYSQLPORT}}/${{MySQL.MYSQLDATABASE}}?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC
-   DB_USERNAME=${{MySQL.MYSQLUSER}}
-   DB_PASSWORD=${{MySQL.MYSQLPASSWORD}}
+   MYSQLHOST=${{MySQL.MYSQLHOST}}
+   MYSQLPORT=${{MySQL.MYSQLPORT}}
+   MYSQLDATABASE=${{MySQL.MYSQLDATABASE}}
+   MYSQLUSER=${{MySQL.MYSQLUSER}}
+   MYSQLPASSWORD=${{MySQL.MYSQLPASSWORD}}
    JWT_SECRET=<a-long-random-secret>
    ```
+
+   The app builds its JDBC connection from `MYSQLHOST`, `MYSQLPORT`,
+   `MYSQLDATABASE`, `MYSQLUSER`, and `MYSQLPASSWORD`. Confirm each reference
+   resolves to a value in the web service's **Variables** tab. You can
+   optionally set `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` to override
+   individual connection settings. If deploy logs say `Access denied for user`,
+   remove those `DB_*` overrides and make sure `MYSQLUSER` and `MYSQLPASSWORD`
+   both reference the same MySQL service. Do not paste or share the password;
+   use Railway's variable-reference picker.
 
    Generate a JWT secret locally with:
 
